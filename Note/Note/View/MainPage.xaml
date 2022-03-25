@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Note.MainPage"
+               FlyoutWidth="250">
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="Black"
+                  HeightRequest="100">
+                <Label Text="Notes"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    <FlyoutItem Title="Заметки">
+        <ShellContent>
+            <ContentPage Title="Заметки">
+               
+            </ContentPage>
+        </ShellContent>
+    </FlyoutItem>
+    
+    <FlyoutItem Title="Задачи">
+        <ShellContent>
+            <ContentPage Title="Задачи">
+                
+            </ContentPage>
+        </ShellContent> 
+    </FlyoutItem>
+
+    <FlyoutItem Title="Календарь">
+        <ShellContent>
+            <ContentPage Title="Календарь">
+                
+            </ContentPage>
+        </ShellContent>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Привычки">
+        <ShellContent>
+            <ContentPage Title="Привычки">
+                
+            </ContentPage>
+        </ShellContent>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Цели">
+        <ShellContent>
+            <ContentPage Title="Цели">
+                
+            </ContentPage>
+        </ShellContent>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Информация">
+        <ShellContent>
+            <ContentPage Title="Информация">
+                
+            </ContentPage>
+        </ShellContent>
+    </FlyoutItem>
+
+    
+    
+    <FlyoutItem Title="Настройки">
+        <ShellContent>
+            <ContentPage Title="Настройки">
+                <Label Text="Настройки"/>
+            </ContentPage>
+        </ShellContent>
+    </FlyoutItem>
+
+   <Shell.FlyoutFooterTemplate>
+        <DataTemplate>
+            <StackLayout>
+                <Label Text="Notes"
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center" />
+                <Label Text="Version 0.1"
+                       TextColor="Black"
+                       HorizontalOptions="Center" />
+            </StackLayout>
+        </DataTemplate>
+    </Shell.FlyoutFooterTemplate>
+
+   
+
+</Shell>
