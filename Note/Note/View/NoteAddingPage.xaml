@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Note.View.NoteAddingPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Editor Placeholder="Note text"
+                        Text="{Binding Path=Text}"
+                        HeightRequest="100"
+                        TextColor="Black"/>
+                
+                <Grid ColumnDefinitions="*,*">
+                    <Button Grid.Column="0" Text="Save" Clicked="OnSaveButton_Clicked" />
+                    <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButton_Clicked" />
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Note.Model;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -9,36 +10,32 @@ using Xamarin.Forms.Xaml;
 
 namespace Note.View
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NotePage : ContentPage
     {
-        public ObservableCollection<string> Items { get; set; }
-
         public NotePage()
         {
             InitializeComponent();
-
-            Items = new ObservableCollection<string>
-            {
-                "Item 1",
-                "Item 2",
-                "Item 3",
-                "Item 4",
-                "Item 5"
-            };
-
-            MyListView.ItemsSource = Items;
         }
 
-        async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
+        protected override async void OnAppearing()
         {
-            if (e.Item == null)
-                return;
+            collectionView.ItemsSource = await App.NoteDB.GetNoteAsync();
+            base.OnAppearing(); 
+        }
 
-            await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+        private async void AddButton_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(NoteAddingPage));
+        }
 
-            //Deselect Item
-            ((ListView)sender).SelectedItem = null;
+        private async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.CurrentSelection != null) 
+            {
+                NoteModel note = (NoteModel)e.CurrentSelection.FirstOrDefault();
+                await Shell.Current.GoToAsync(
+                    $"{nameof(NoteAddingPage)}?{nameof(NoteAddingPage.ItemId)}={note.ID.ToString()}");
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Note.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace Note
         public MainPage()
         {
             InitializeComponent();
+            Routing.RegisterRoute(nameof(NoteAddingPage), typeof(NoteAddingPage));
         }
     }
 }
