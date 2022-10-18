@@ -27,7 +27,7 @@
     </FlyoutItem>
     
     <FlyoutItem Title="Задачи">
-        <ShellContent>
+        <ShellContent ContentTemplate="{DataTemplate local:TaskPage}">
             <ContentPage Title="Задачи">
                 
             </ContentPage>
@@ -51,7 +51,7 @@
     </FlyoutItem>
 
     <FlyoutItem Title="Цели">
-        <ShellContent >
+        <ShellContent>
             <ContentPage Title="Цели">
                 
             </ContentPage>
