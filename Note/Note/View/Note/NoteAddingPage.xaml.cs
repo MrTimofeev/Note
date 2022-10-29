@@ -44,7 +44,7 @@ namespace Note.View
         {
             NoteModel note = (NoteModel)BindingContext;
 
-            note.Date = DateTime.UtcNow;
+            note.Date = DateTime.Now.ToShortDateString();
 
             if (!string.IsNullOrWhiteSpace(note.Text))
             {
