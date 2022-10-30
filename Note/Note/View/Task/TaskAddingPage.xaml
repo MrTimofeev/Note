@@ -4,9 +4,21 @@
              x:Class="Note.View.TaskAddingPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout>
+                <Editor Placeholder="Note title"
+                        Text="{Binding Path=Title}"
+                        HeightRequest="100"
+                        TextColor="Black"/>
+                <Editor Placeholder="Note text"
+                        Text="{Binding Path=Text}"
+                        HeightRequest="100"
+                        TextColor="Black"/>
+
+                <Grid ColumnDefinitions="*,*">
+                    <Button Grid.Column="0" Text="Save"/>
+                    <Button Grid.Column="1" Text="Delete"/>
+                </Grid>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

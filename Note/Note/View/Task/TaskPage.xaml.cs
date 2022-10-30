@@ -16,5 +16,12 @@ namespace Note.View
         {
             InitializeComponent();
         }
+        #region Комнады
+        // Команда прехода на страницу добавления
+        private async void AddButton_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(TaskAddingPage));
+        }
+        #endregion
     }
 }

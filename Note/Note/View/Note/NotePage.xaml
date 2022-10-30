@@ -2,9 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Note.View.NotePage">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="AddButton_Clicked"/>
+    <ContentPage.ToolbarItems >
+        <ToolbarItem Text="Add" Clicked="AddButton_Clicked" />
     </ContentPage.ToolbarItems>
+    <!--Это стиль для изменения цвета выбора-->
     <ContentPage.Resources>
         <Style TargetType="Grid">
             <Setter Property="VisualStateManager.VisualStateGroups">
@@ -14,7 +15,7 @@
                         <VisualState x:Name="Selected">
                             <VisualState.Setters>
                                 <Setter Property="BackgroundColor"
-                                        Value="White" />
+                                        Value="White" /> <!--TODO:Потом измени цвет если будешь менять фон-->
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
@@ -33,14 +34,17 @@
         </CollectionView.ItemsLayout>
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Frame BorderColor="Black" Padding="5" CornerRadius="10" BackgroundColor="Gray">
-                    <Grid>
-                        <StackLayout>
-                            <Label Text="{Binding Path=Text}" FontSize="Medium" TextColor="Black" Margin="10,0,5,0"/>
-                            <Label  Grid.Column="1" Text="{Binding Path=Date}" TextColor="Black" FontSize="Small" HorizontalTextAlignment="End"/>
-                        </StackLayout>
-                    </Grid>
-                </Frame>
+                <Grid >
+                    <Frame BorderColor="Black" Padding="5" CornerRadius="10" BackgroundColor="Gray" >
+                        <Grid>
+                            <StackLayout>
+                                <Label Text="{Binding Path=Title}" FontSize="Medium" TextColor="Black" Margin="10,0,5,0" HeightRequest="35"/>
+                                <Label  Grid.Column="1" Text="{Binding Path=Date}" TextColor="Black" FontSize="Small" HorizontalTextAlignment="End"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </Grid>
+               
             </DataTemplate>
         </CollectionView.ItemTemplate>
 

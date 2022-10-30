@@ -5,6 +5,10 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout>
+                <Editor Placeholder="Note title"
+                        Text="{Binding Path=Title}"
+                        HeightRequest="100"
+                        TextColor="Black"/>
                 <Editor Placeholder="Note text"
                         Text="{Binding Path=Text}"
                         HeightRequest="100"
