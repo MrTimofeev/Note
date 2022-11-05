@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Note.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,13 @@ namespace Note.View
         {
             InitializeComponent();
         }
+
+        protected override async void OnAppearing()
+        {
+            collectionView.ItemsSource = await App.NoteDB.GetTaskAsync();
+            base.OnAppearing();
+        }
+
         #region Комнады
         // Команда прехода на страницу добавления
         private async void AddButton_Clicked(object sender, EventArgs e)
@@ -23,5 +31,15 @@ namespace Note.View
             await Shell.Current.GoToAsync(nameof(TaskAddingPage));
         }
         #endregion
+
+        private async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.CurrentSelection != null)
+            {
+                TaskModel note = (TaskModel)e.CurrentSelection.FirstOrDefault();
+                await Shell.Current.GoToAsync(
+                    $"{nameof(TaskAddingPage)}?{nameof(TaskAddingPage.ItemId)}={note.ID.ToString()}");
+            }
+        }
     }
 }

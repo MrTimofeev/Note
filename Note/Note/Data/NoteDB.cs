@@ -13,8 +13,12 @@ namespace Note.Data
         {
             db = new SQLiteAsyncConnection(connectionstring);
             db.CreateTableAsync<NoteModel>().Wait();
+            db.CreateTableAsync<TaskModel>().Wait();
         }
 
+
+        //TODO: Потом перенести в отдельный класс
+        #region Методы работы с бд для ЗАМЕТОК 
         public Task<List<NoteModel>> GetNoteAsync()
         {
             return db.Table<NoteModel>().ToListAsync();
@@ -43,6 +47,38 @@ namespace Note.Data
         {
             return db.DeleteAsync(note);
         }
+        #endregion  
 
+        //TODO: Потом перенести в отдельный класс
+        #region Методы работы с бд для ЗАДАЧ
+        public Task<List<TaskModel>> GetTaskAsync()
+        {
+            return db.Table<TaskModel>().ToListAsync();
+        }
+
+        public Task<TaskModel> GetTaskAsync(int ID)
+        {
+            return db.Table<TaskModel>()
+                .Where(i => i.ID == ID)
+                .FirstOrDefaultAsync();
+        }
+
+        public Task<int> SaveTaskAsync(TaskModel task)
+        {
+            if (task.ID != 0)
+            {
+                return db.UpdateAsync(task);
+            }
+            else
+            {
+                return db.InsertAsync(task);
+            }
+        }
+
+        public Task<int> DeleteTaskAsync(TaskModel task)
+        {
+            return db.DeleteAsync(task);
+        }
+        #endregion
     }
 }
