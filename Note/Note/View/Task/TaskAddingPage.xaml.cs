@@ -14,8 +14,6 @@ namespace Note.View
     [QueryProperty(nameof(ItemId), nameof(ItemId))]
     public partial class TaskAddingPage : ContentPage
     {
-        INotificationManager notificationManager;
-        int notificationNumber = 0;
 
         public TaskAddingPage()
         {
@@ -31,7 +29,6 @@ namespace Note.View
             }
         }
 
-     
 
         private async void LoadTask(string value)
         {
@@ -46,12 +43,6 @@ namespace Note.View
 
         private async void OnSaveButton_Clicked(object sender, EventArgs e)
         {
-            notificationNumber++;
-            string title = $"Local Notification #{notificationNumber}";
-            string message = $"You have now received {notificationNumber} notifications!";
-            notificationManager.SendNotification(title, message);
-
-
             TaskModel task = (TaskModel)BindingContext;
 
             task.Date = DateTime.Now.ToShortDateString();
