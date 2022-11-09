@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Plugin.LocalNotifications;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -43,8 +43,8 @@ namespace Note.View
 
         private async void OnSaveButton_Clicked(object sender, EventArgs e)
         {
+            CrossLocalNotifications.Current.Show("Заголов", "Текст уведомления"); // Пример уведомления 
             TaskModel task = (TaskModel)BindingContext;
-
             task.Date = DateTime.Now.ToShortDateString();
 
             if (!string.IsNullOrWhiteSpace(task.Text))

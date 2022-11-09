@@ -25,6 +25,7 @@ namespace Note.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Plugin.LocalNotifications.Resource.Drawable.plugin_lc_smallicon = global::Note.Droid.Resource.Drawable.plugin_lc_smallicon;
 			global::Xamarin.Essentials.Resource.Attribute.alpha = global::Note.Droid.Resource.Attribute.alpha;
 			global::Xamarin.Essentials.Resource.Attribute.font = global::Note.Droid.Resource.Attribute.font;
 			global::Xamarin.Essentials.Resource.Attribute.fontProviderAuthority = global::Note.Droid.Resource.Attribute.fontProviderAuthority;
@@ -16652,16 +16653,19 @@ namespace Note.Droid
 			public const int notify_panel_notification_icon_bg = 2131165323;
 			
 			// aapt resource value: 0x7F07008C
-			public const int preference_list_divider_material = 2131165324;
+			public const int plugin_lc_smallicon = 2131165324;
 			
 			// aapt resource value: 0x7F07008D
-			public const int test_custom_background = 2131165325;
+			public const int preference_list_divider_material = 2131165325;
 			
 			// aapt resource value: 0x7F07008E
-			public const int tooltip_frame_dark = 2131165326;
+			public const int test_custom_background = 2131165326;
 			
 			// aapt resource value: 0x7F07008F
-			public const int tooltip_frame_light = 2131165327;
+			public const int tooltip_frame_dark = 2131165327;
+			
+			// aapt resource value: 0x7F070090
+			public const int tooltip_frame_light = 2131165328;
 			
 			static Drawable()
 			{
@@ -18788,6 +18792,9 @@ namespace Note.Droid
 			
 			// aapt resource value: 0x7F0C0002
 			public const int launcher_foreground = 2131492866;
+			
+			// aapt resource value: 0x7F0C0003
+			public const int myicon = 2131492867;
 			
 			static Mipmap()
 			{
