@@ -60,7 +60,7 @@ namespace Note.View
 
             await App.NoteDB.DeleteNoteAsync(note);
 
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.GoToAsync(".."); // Закрытие страницы задач
         }
     }
 }

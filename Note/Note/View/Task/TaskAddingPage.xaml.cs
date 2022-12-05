@@ -7,10 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Plugin.LocalNotifications;
 using Xamarin.Forms;
+
 using Xamarin.Forms.Xaml;
 
 namespace Note.View
 {
+   
     [QueryProperty(nameof(ItemId), nameof(ItemId))]
     public partial class TaskAddingPage : ContentPage
     {
@@ -29,7 +31,9 @@ namespace Note.View
             }
         }
 
-
+        /// <summary>
+        /// Асинхронный метод загрузки задачи
+        /// </summary>
         private async void LoadTask(string value)
         {
             try
@@ -41,12 +45,17 @@ namespace Note.View
             catch { }
         }
 
+
+        /// <summary>
+        /// Сохрание задачи
+        /// </summary>
         private async void OnSaveButton_Clicked(object sender, EventArgs e)
         {
             CrossLocalNotifications.Current.Show("Заголов", "Текст уведомления"); // Пример уведомления 
-            TaskModel task = (TaskModel)BindingContext;
-            task.Date = DateTime.Now.ToShortDateString();
 
+            TaskModel task = (TaskModel)BindingContext;
+            task.Date = DateTime.Now.ToShortDateString(); 
+            task.Status = false; // задача не выполнена 
             if (!string.IsNullOrWhiteSpace(task.Text))
             {
                 await App.NoteDB.SaveTaskAsync(task);
@@ -54,7 +63,10 @@ namespace Note.View
 
             await Shell.Current.GoToAsync("..");
         }
-
+        
+        /// <summary>
+        /// Удаление задачи
+        /// </summary>
         private async void OnDeleteButton_Clicked(object sender, EventArgs e)
         {
             TaskModel task = (TaskModel)BindingContext;

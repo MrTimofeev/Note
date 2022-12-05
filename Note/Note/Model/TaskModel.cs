@@ -11,8 +11,19 @@ namespace Note.Model
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
 
+        /// <summary>
+        /// Текст задачи 
+        /// </summary>
         public string Text { get; set; }
 
+        /// <summary>
+        /// Дата создания задачи
+        /// </summary>
         public String Date { get; set; }
+
+        /// <summary>
+        /// Статус задачи ВЫПОЛНЕН/НЕВЫПОЛНЕН
+        /// </summary>
+        public bool Status { get; set; }
     }
 }
