@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Note.MainPage"
                 xmlns:local="clr-namespace:Note.View"
-               FlyoutWidth="250">
+               FlyoutWidth="250"  BackgroundColor="DarkSlateGray">
 
-    <Shell.FlyoutHeaderTemplate>
+    <Shell.FlyoutHeaderTemplate >
         <DataTemplate>
             <Grid BackgroundColor="Black"
                   HeightRequest="100">

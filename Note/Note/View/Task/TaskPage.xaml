@@ -1,16 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Note.View.TaskPage">
+             x:Class="Note.View.TaskPage" BackgroundColor="Black">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="AddButton_Clicked"/>
     </ContentPage.ToolbarItems>
     <CollectionView x:Name="collectionView"
                     Margin="20"
                     SelectionMode="Single"
-                    SelectionChanged="OnSelectionChanged" 
-                    ItemsSource="{Binding TaskCollection}"
-                    IsGrouped="False">
+                    SelectionChanged="OnSelectionChanged">
         <CollectionView.ItemsLayout>
             <LinearItemsLayout Orientation="Vertical"
                                 ItemSpacing="10"/>
@@ -25,23 +23,17 @@
         </CollectionView.GroupHeaderTemplate>
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <SwipeView>
-                    <SwipeView.RightItems>
-                        <SwipeItems>
-                            <SwipeItem Text="Delete"
-                                     BackgroundColor="LightPink"
-                                    Clicked="DeleteTaskCommand"/>
-                        </SwipeItems>
-                    </SwipeView.RightItems>
-                    <Grid BackgroundColor="White">
+                <Frame Padding="5" CornerRadius="10" BackgroundColor ="LightGray">
+                    <Grid BackgroundColor="LightGray">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="40"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <CheckBox Grid.Column="0" IsChecked="{Binding Path=Status}" CheckedChanged="CheckedChangedTask" BindingContext="{Binding .}"/>
-                        <Label Grid.Column ="1"  Text="{Binding Path=Text}" FontSize="Medium" TextColor="Black"/>
+                        <Label Grid.Column ="1"  Text="{Binding Path=Text}" FontSize="Medium" TextColor="Black" Margin="0,0,0,7" />
                     </Grid>
-                </SwipeView>
+                </Frame>
+               
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>

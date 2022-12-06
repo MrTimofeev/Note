@@ -71,6 +71,7 @@ namespace Note.View
         /// </summary>
         private async void CheckedChangedTask(object sender, CheckedChangedEventArgs e)
         {
+            
             TaskModel task = (TaskModel)((CheckBox)sender).BindingContext;
 
             if (task.Status == false)
@@ -90,6 +91,7 @@ namespace Note.View
                     await App.NoteDB.SaveTaskAsync(task);
                 }
             }
+           
         }
         #endregion
 

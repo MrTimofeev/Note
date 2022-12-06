@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Note.View.NotePage">
-    <ContentPage.ToolbarItems >
+             x:Class="Note.View.NotePage" BackgroundColor="Black"  >
+    <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="AddButton_Clicked" />
     </ContentPage.ToolbarItems>
     <!--Это стиль для изменения цвета выбора-->
@@ -23,6 +23,7 @@
             </Setter>
         </Style>
     </ContentPage.Resources>
+    
     <CollectionView x:Name="collectionView"
                     Margin="20"
                     SelectionMode="Single"
@@ -42,7 +43,7 @@
                                     Clicked="DeleteNoteCommand"/>
                         </SwipeItems>
                     </SwipeView.RightItems>
-                    <Grid BackgroundColor="White">
+                    <Grid BackgroundColor="Black">
                         <Frame BorderColor="Black" Padding="5" CornerRadius="10" BackgroundColor="Gray" >
                             <Grid>
                                 <StackLayout>
