@@ -15,7 +15,7 @@ namespace Note.View
     public partial class TaskPage : ContentPage
     {
         public List<TaskModel> source;
-
+        
         public List<TaskModel> TaskCollection
         {
             get => source;
@@ -38,7 +38,7 @@ namespace Note.View
         {
             collectionView.ItemsSource = await App.NoteDB.GetTaskAsync();
             base.OnAppearing();
-           // TaskCollection = new List<TaskModel>();
+           //TaskCollection = new List<TaskModel>();
             //TaskCollection = await App.NoteDB.GetTaskAsync();
         }
 
@@ -92,5 +92,15 @@ namespace Note.View
             }
         }
         #endregion
+
+        /// <summary>
+        /// Удаление задачи
+        /// </summary>
+        private async void DeleteTaskCommand(object sender, EventArgs e)
+        {
+            TaskModel task = (TaskModel)((SwipeItem)sender).BindingContext;
+            await App.NoteDB.DeleteTaskAsync(task);
+            collectionView.ItemsSource = await App.NoteDB.GetTaskAsync();
+        }
     }
 }

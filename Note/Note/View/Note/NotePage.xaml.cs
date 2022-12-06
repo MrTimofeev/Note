@@ -37,5 +37,12 @@ namespace Note.View
                     $"{nameof(NoteAddingPage)}?{nameof(NoteAddingPage.ItemId)}={note.ID.ToString()}");
             }
         }
+
+        private async void DeleteNoteCommand(object sender, EventArgs e)
+        {
+            NoteModel note = (NoteModel)((SwipeItem)sender).BindingContext;
+            await App.NoteDB.DeleteNoteAsync(note);
+            collectionView.ItemsSource = await App.NoteDB.GetNoteAsync();
+        }
     }
 }

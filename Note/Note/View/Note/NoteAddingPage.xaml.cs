@@ -46,7 +46,7 @@ namespace Note.View
 
             note.Date = DateTime.Now.ToShortDateString();
 
-            if (!string.IsNullOrWhiteSpace(note.Text))
+            if (!string.IsNullOrWhiteSpace(note.Title))
             {
                 await App.NoteDB.SaveNoteAsync(note);
             }

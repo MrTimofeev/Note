@@ -10,7 +10,7 @@
                     SelectionMode="Single"
                     SelectionChanged="OnSelectionChanged" 
                     ItemsSource="{Binding TaskCollection}"
-                    IsGrouped="True">
+                    IsGrouped="False">
         <CollectionView.ItemsLayout>
             <LinearItemsLayout Orientation="Vertical"
                                 ItemSpacing="10"/>
@@ -25,14 +25,23 @@
         </CollectionView.GroupHeaderTemplate>
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <CheckBox Grid.Column="0" IsChecked="{Binding Path=Status}" CheckedChanged="CheckedChangedTask" BindingContext="{Binding .}"/>
-                    <Label Grid.Column ="1"  Text="{Binding Path=Text}" FontSize="Medium" TextColor="Black"/>
-                </Grid>
+                <SwipeView>
+                    <SwipeView.RightItems>
+                        <SwipeItems>
+                            <SwipeItem Text="Delete"
+                                     BackgroundColor="LightPink"
+                                    Clicked="DeleteTaskCommand"/>
+                        </SwipeItems>
+                    </SwipeView.RightItems>
+                    <Grid BackgroundColor="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Grid.Column="0" IsChecked="{Binding Path=Status}" CheckedChanged="CheckedChangedTask" BindingContext="{Binding .}"/>
+                        <Label Grid.Column ="1"  Text="{Binding Path=Text}" FontSize="Medium" TextColor="Black"/>
+                    </Grid>
+                </SwipeView>
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>

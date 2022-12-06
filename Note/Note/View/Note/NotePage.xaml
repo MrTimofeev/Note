@@ -34,17 +34,25 @@
         </CollectionView.ItemsLayout>
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Grid >
-                    <Frame BorderColor="Black" Padding="5" CornerRadius="10" BackgroundColor="Gray" >
-                        <Grid>
-                            <StackLayout>
-                                <Label Text="{Binding Path=Title}" FontSize="Medium" TextColor="Black" Margin="10,0,5,0" HeightRequest="35"/>
-                                <Label  Grid.Column="1" Text="{Binding Path=Date}" TextColor="Black" FontSize="Small" HorizontalTextAlignment="End"/>
-                            </StackLayout>
-                        </Grid>
-                    </Frame>
-                </Grid>
-               
+                <SwipeView>
+                    <SwipeView.RightItems>
+                        <SwipeItems>
+                            <SwipeItem Text="Delete"
+                                     BackgroundColor="LightPink"
+                                    Clicked="DeleteNoteCommand"/>
+                        </SwipeItems>
+                    </SwipeView.RightItems>
+                    <Grid BackgroundColor="White">
+                        <Frame BorderColor="Black" Padding="5" CornerRadius="10" BackgroundColor="Gray" >
+                            <Grid>
+                                <StackLayout>
+                                    <Label Text="{Binding Path=Title}" FontSize="Medium" TextColor="Black" Margin="10,0,5,0" HeightRequest="35"/>
+                                    <Label  Grid.Column="1" Text="{Binding Path=Date}" TextColor="Black" FontSize="Small" HorizontalTextAlignment="End"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </SwipeView>
             </DataTemplate>
         </CollectionView.ItemTemplate>
 
