@@ -8,11 +8,21 @@
     <CollectionView x:Name="collectionView"
                     Margin="20"
                     SelectionMode="Single"
-                    SelectionChanged="OnSelectionChanged">
+                    SelectionChanged="OnSelectionChanged" 
+                    ItemsSource="{Binding TaskCollection}"
+                    IsGrouped="True">
         <CollectionView.ItemsLayout>
             <LinearItemsLayout Orientation="Vertical"
                                 ItemSpacing="10"/>
         </CollectionView.ItemsLayout>
+        <CollectionView.GroupHeaderTemplate>
+            <DataTemplate>
+                <Label Text="Выполненные"
+                   BackgroundColor="LightGray"
+                   FontSize="Large"
+                   FontAttributes="Bold" />
+            </DataTemplate>
+        </CollectionView.GroupHeaderTemplate>
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <Grid>
@@ -20,7 +30,7 @@
                         <ColumnDefinition Width="40"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <CheckBox Grid.Column="0"/>
+                    <CheckBox Grid.Column="0" IsChecked="{Binding Path=Status}" CheckedChanged="CheckedChangedTask" BindingContext="{Binding .}"/>
                     <Label Grid.Column ="1"  Text="{Binding Path=Text}" FontSize="Medium" TextColor="Black"/>
                 </Grid>
             </DataTemplate>

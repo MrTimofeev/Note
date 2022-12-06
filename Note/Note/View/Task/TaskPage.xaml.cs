@@ -1,6 +1,7 @@
 ﻿using Note.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,21 @@ namespace Note.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TaskPage : ContentPage
     {
+        public List<TaskModel> source;
+
+        public List<TaskModel> TaskCollection
+        {
+            get => source;
+            private set
+            {
+                if (value != source)
+                {
+                    source = value;
+                    OnPropertyChanged(nameof(TaskModel));
+                }
+            }
+        }
+
         public TaskPage()
         {
             InitializeComponent();
@@ -22,6 +38,8 @@ namespace Note.View
         {
             collectionView.ItemsSource = await App.NoteDB.GetTaskAsync();
             base.OnAppearing();
+           // TaskCollection = new List<TaskModel>();
+            //TaskCollection = await App.NoteDB.GetTaskAsync();
         }
 
         #region Комнады
@@ -32,14 +50,47 @@ namespace Note.View
         }
         #endregion
 
+        #region Выбор Задачи
+        /// <summary>
+        /// Событие выбора задачи (После выбора открывается страница с добавлением задач)
+        /// </summary>
         private async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.CurrentSelection != null)
             {
-                TaskModel note = (TaskModel)e.CurrentSelection.FirstOrDefault();
+                TaskModel task = (TaskModel)e.CurrentSelection.FirstOrDefault();
                 await Shell.Current.GoToAsync(
-                    $"{nameof(TaskAddingPage)}?{nameof(TaskAddingPage.ItemId)}={note.ID.ToString()}");
+                    $"{nameof(TaskAddingPage)}?{nameof(TaskAddingPage.ItemId)}={task.ID.ToString()}");
             }
         }
+        #endregion
+
+        #region Сохранения состояния задачи
+        /// <summary>
+        /// Событие сохранения состояния задачи
+        /// </summary>
+        private async void CheckedChangedTask(object sender, CheckedChangedEventArgs e)
+        {
+            TaskModel task = (TaskModel)((CheckBox)sender).BindingContext;
+
+            if (task.Status == false)
+            {
+                task.Status = false; // задача не выполнена 
+                if (!string.IsNullOrWhiteSpace(task.Text))
+                {
+                    await App.NoteDB.SaveTaskAsync(task);
+                }
+            }
+
+            if (task.Status == true)
+            {
+                task.Status = true; // задача выполнена 
+                if (!string.IsNullOrWhiteSpace(task.Text))
+                {
+                    await App.NoteDB.SaveTaskAsync(task);
+                }
+            }
+        }
+        #endregion
     }
 }
