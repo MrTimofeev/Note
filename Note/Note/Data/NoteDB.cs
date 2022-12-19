@@ -14,6 +14,7 @@ namespace Note.Data
             db = new SQLiteAsyncConnection(connectionstring);
             db.CreateTableAsync<NoteModel>().Wait();
             db.CreateTableAsync<TaskModel>().Wait();
+            db.CreateTableAsync<NotificationsModel>().Wait();
         }
 
 
@@ -78,6 +79,39 @@ namespace Note.Data
         public Task<int> DeleteTaskAsync(TaskModel task)
         {
             return db.DeleteAsync(task);
+        }
+        #endregion
+
+
+        //TODO: Потом перенести в отдельный класс
+        #region Методы работы с бд для Уведомлений
+        public Task<List<NotificationsModel>> GetNotificationAsync()
+        {
+            return db.Table<NotificationsModel>().ToListAsync();
+        }
+
+        public Task<NotificationsModel> GetNotificationAsync(int ID)
+        {
+            return db.Table<NotificationsModel>()
+                .Where(i => i.ID == ID)
+                .FirstOrDefaultAsync();
+        }
+
+        public Task<int> SaveNotificationAsync(NotificationsModel notification)
+        {
+            if (notification.ID != 0)
+            {
+                return db.UpdateAsync(notification);
+            }
+            else
+            {
+                return db.InsertAsync(notification);
+            }
+        }
+
+        public Task<int> DeleteNotificationAsync(NotificationsModel notification)
+        {
+            return db.DeleteAsync(notification);
         }
         #endregion
     }

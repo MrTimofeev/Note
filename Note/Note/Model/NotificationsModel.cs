@@ -14,11 +14,17 @@ namespace Note.Model
         /// <summary>
         /// Заголовок уведомления
         /// </summary>
-        public string TextNotification { get; set; }
+        public string TitelNotification { get; set; }
 
         /// <summary>
         /// Текст уведомления
         /// </summary>
-        public string TitelNotification { get; set; }
+        public string TextNotification { get; set; }
+
+        /// <summary>
+        ///  Дата отображения уведомления
+        /// </summary>
+        public DateTime DateNotification { get; set; }
+
     }
 }

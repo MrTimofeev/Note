@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Note.View.NotificationAddingPage"
+             BackgroundColor="Black">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Frame BorderColor="Black" Padding="5" CornerRadius="10" BackgroundColor="LightGray" Margin="5,11,5,5">
+                    <Editor Placeholder="Заголовок"
+                        Text="{Binding Path=TitelNotification}"
+                        MinimumHeightRequest="100"
+                        TextColor="Black"
+                          BackgroundColor="LightGray" 
+                                AutoSize="TextChanges"
+                        PlaceholderColor="Gray"/>
+                </Frame>
+                <Frame BorderColor="Black" Padding="5" CornerRadius="10" BackgroundColor="LightGray" Margin="5">
+                    <Editor Placeholder="Описание"
+                        Text="{Binding Path=TextNotification}"
+                        HeightRequest="100"
+                        TextColor="Black"
+                            PlaceholderColor="Gray"
+                             BackgroundColor="LightGray" 
+                                AutoSize="TextChanges"/>
+                </Frame>
+                <Grid ColumnDefinitions="*,*">
+                    <Button Grid.Column="0" Text="Save" Clicked="OnSaveButton_Clicked" />
+                    <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButton_Clicked"/>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

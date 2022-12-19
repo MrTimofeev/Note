@@ -34,6 +34,7 @@
         </ShellContent> 
     </FlyoutItem>
 
+    <!--
     <FlyoutItem Title="Календарь">
         <ShellContent>
             <ContentPage Title="Календарь">
@@ -57,25 +58,33 @@
             </ContentPage>
         </ShellContent>
     </FlyoutItem>
-
-    <FlyoutItem Title="Информация">
-        <ShellContent>
-            <ContentPage Title="Информация">
-                
-            </ContentPage>
-        </ShellContent>
-    </FlyoutItem>
-
     
-    <FlyoutItem Title="Настройки">
+     <FlyoutItem Title="Настройки">
         <ShellContent>
             <ContentPage Title="Настройки">
                 <Label Text="Настройки"/>
             </ContentPage>
         </ShellContent>
     </FlyoutItem>
+    -->
+    
+    <FlyoutItem Title="Напоминания">
+        <ShellContent ContentTemplate="{DataTemplate local:NotificationPage}">
+            <ContentPage Title="Напоминания">
 
-   <Shell.FlyoutFooterTemplate>
+            </ContentPage>
+        </ShellContent>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Информация">
+        <ShellContent>
+            <ContentPage Title="Информация">
+
+            </ContentPage>
+        </ShellContent>
+    </FlyoutItem>
+
+    <Shell.FlyoutFooterTemplate>
         <DataTemplate>
             <StackLayout>
                 <Label Text="Notes"
