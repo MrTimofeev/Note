@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Note.View.NotificationPage">
+             x:Class="Note.View.NotificationPage" BackgroundColor="Black">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="AddButton_Clicked"/>
+        <ToolbarItem Text="добавить" Clicked="AddButton_Clicked"/>
     </ContentPage.ToolbarItems>
     <!--Это стиль для изменения цвета выбора-->
     <ContentPage.Resources>
@@ -45,11 +45,39 @@
                         </SwipeItems>
                     </SwipeView.RightItems>
                     <Grid BackgroundColor="Black">
-                        <Frame BorderColor="Black" Padding="5" CornerRadius="10" BackgroundColor="Gray" >
+                        <Frame BorderColor="Black" 
+                               Padding="5" 
+                               CornerRadius="10" 
+                               BackgroundColor="Gray" >
                             <Grid>
                                 <StackLayout>
-                                    <Label Text="{Binding Path=TitelNotification}" FontSize="Medium" TextColor="Black" Margin="10,0,5,0" HeightRequest="35"/>
-                                    <Label  Grid.Column="1" Text="{Binding Path=DateNotification}" TextColor="Black" FontSize="Small" HorizontalTextAlignment="End"/>
+                                    <Label Text="{Binding Path=TitelNotification}" 
+                                           FontSize="Medium" 
+                                           TextColor="Black" 
+                                           Margin="10,0,5,0" 
+                                           HeightRequest="35" 
+                                           VerticalTextAlignment="Center"/>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                                        <Label Text="Дата:"
+                                            TextColor="Black" 
+                                           FontSize="Small" 
+                                           HorizontalTextAlignment="Center"/>
+                                        <Label Text="{Binding Path=DateNotification}" 
+                                           TextColor="Black" 
+                                           FontSize="Small" 
+                                           HorizontalTextAlignment="End"/>
+
+                                        <Label Text="время:" 
+                                           TextColor="Black" 
+                                           FontSize="Small" 
+                                           HorizontalTextAlignment="End"/>
+                                        <Label Text="{Binding Path=TimeNotification}" 
+                                           TextColor="Black" 
+                                           FontSize="Small" 
+                                           HorizontalTextAlignment="End"/>
+
+                                    </StackLayout>
+                                    
                                 </StackLayout>
                             </Grid>
                         </Frame>

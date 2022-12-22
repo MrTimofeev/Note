@@ -66,6 +66,15 @@
             </ContentPage>
         </ShellContent>
     </FlyoutItem>
+    
+    <FlyoutItem Title="Информация">
+        <ShellContent>
+            <ContentPage Title="Информация">
+
+            </ContentPage>
+        </ShellContent>
+    </FlyoutItem>
+    
     -->
     
     <FlyoutItem Title="Напоминания">
@@ -76,13 +85,7 @@
         </ShellContent>
     </FlyoutItem>
 
-    <FlyoutItem Title="Информация">
-        <ShellContent>
-            <ContentPage Title="Информация">
-
-            </ContentPage>
-        </ShellContent>
-    </FlyoutItem>
+    
 
     <Shell.FlyoutFooterTemplate>
         <DataTemplate>

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Note.View.TaskPage" BackgroundColor="Black">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="AddButton_Clicked"/>
+        <ToolbarItem Text="добавить" Clicked="AddButton_Clicked"/>
     </ContentPage.ToolbarItems>
     <CollectionView x:Name="collectionView"
                     Margin="20"

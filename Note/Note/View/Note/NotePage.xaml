@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Note.View.NotePage" BackgroundColor="Black"  >
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="AddButton_Clicked" />
+        <ToolbarItem Text="добавить" Clicked="AddButton_Clicked"/>
     </ContentPage.ToolbarItems>
     <!--Это стиль для изменения цвета выбора-->
     <ContentPage.Resources>
@@ -38,7 +38,7 @@
                 <SwipeView>
                     <SwipeView.RightItems>
                         <SwipeItems>
-                            <SwipeItem Text="Delete"
+                            <SwipeItem Text="Удалить"
                                      BackgroundColor="LightPink"
                                     Clicked="DeleteNoteCommand"/>
                         </SwipeItems>
@@ -48,7 +48,7 @@
                             <Grid>
                                 <StackLayout>
                                     <Label Text="{Binding Path=Title}" FontSize="Medium" TextColor="Black" Margin="10,0,5,0" HeightRequest="35"/>
-                                    <Label  Grid.Column="1" Text="{Binding Path=Date}" TextColor="Black" FontSize="Small" HorizontalTextAlignment="End"/>
+                                    <Label Text="{Binding Path=Date}" TextColor="Black" FontSize="Small" HorizontalTextAlignment="End"/>
                                 </StackLayout>
                             </Grid>
                         </Frame>

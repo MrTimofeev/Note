@@ -24,9 +24,23 @@
                              BackgroundColor="LightGray" 
                                 AutoSize="TextChanges"/>
                 </Frame>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Выбирете дату:" VerticalOptions="Center" TextColor="Gray"/>
+                    <Frame BorderColor="Black" Padding="5" CornerRadius="10" BackgroundColor="LightGray" Margin="5">
+                        <DatePicker x:Name="DateNotification" Format="D" TextColor="Black" Date="{Binding Path=DateNotification}" />
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Выбирете время:" VerticalOptions="Center" TextColor="Gray"/>
+                    <Frame BorderColor="Black" Padding="5" CornerRadius="10" BackgroundColor="LightGray" Margin="5">
+                        <TimePicker x:Name="TimeNotification" TextColor="Black" Time="{Binding Path=TimeNotification}" />
+                    </Frame>
+                </StackLayout>
+
                 <Grid ColumnDefinitions="*,*">
-                    <Button Grid.Column="0" Text="Save" Clicked="OnSaveButton_Clicked" />
-                    <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButton_Clicked"/>
+                    <Button Grid.Column="0" Text="Сохранить" Clicked="OnSaveButton_Clicked" />
+                    <Button Grid.Column="1" Text="Удалить" Clicked="OnDeleteButton_Clicked"/>
                 </Grid>
             </StackLayout>
         </StackLayout>

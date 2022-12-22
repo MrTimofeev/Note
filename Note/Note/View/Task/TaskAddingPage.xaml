@@ -8,7 +8,7 @@
             <StackLayout>
                 <Grid>
                     <Frame BorderColor="Black" Padding="5" CornerRadius="10" BackgroundColor="LightGray" Margin="5">
-                        <Editor Placeholder="Task text"
+                        <Editor Placeholder="Задача"
                         PlaceholderColor="Gray"
                         Text="{Binding Path=Text}"
                         TextColor="Black" 
@@ -17,8 +17,8 @@
                     </Frame>
                 </Grid>
                 <Grid ColumnDefinitions="*,*">
-                    <Button Grid.Column="0" Text="Save"  Clicked="OnSaveButton_Clicked"/>
-                    <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButton_Clicked"/>
+                    <Button Grid.Column="0" Text="Сохранить"  Clicked="OnSaveButton_Clicked"/>
+                    <Button Grid.Column="1" Text="Удалить" Clicked="OnDeleteButton_Clicked"/>
                 </Grid>
             </StackLayout>
         </StackLayout>
