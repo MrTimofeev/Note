@@ -1,5 +1,5 @@
 ﻿using Note.Model;
-using Plugin.LocalNotifications;
+using Plugin.LocalNotification;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,7 +51,19 @@ namespace Note.View
             // Переменная для создания уведомления
             var date = DateTime.Parse(DateNotification.Date.ToShortDateString().ToString() + " " + TimeNotification.Time.ToString());
 
-            CrossLocalNotifications.Current.Show(notification.TitelNotification, notification.TextNotification, notification.ID, date);
+            // Здесь код для отображение уведомления
+            var notification1 = new NotificationRequest
+            {
+                NotificationId = notification.ID,
+                Title = notification.TitelNotification,
+                Description = notification.TextNotification,
+                Schedule =
+                {
+                   NotifyTime = date // Used for Scheduling local notification, if not specified notification will show immediately.
+                }
+            };
+            await LocalNotificationCenter.Current.Show(notification1);
+
 
             if (!string.IsNullOrWhiteSpace(notification.TitelNotification))
             {
@@ -65,7 +77,7 @@ namespace Note.View
         {
             NotificationsModel notification = (NotificationsModel)BindingContext;
 
-            CrossLocalNotifications.Current.Cancel(notification.ID);
+            // код для отметы отображение запронированного уведомления
             
             await App.NoteDB.DeleteNotificationAsync(notification);
 
