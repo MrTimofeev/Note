@@ -94,7 +94,7 @@
                        TextColor="Black"
                        FontAttributes="Bold"
                        HorizontalOptions="Center" />
-                <Label Text="Version 0.1"
+                <Label Text="Version 1.0"
                        TextColor="Black"
                        HorizontalOptions="Center" />
             </StackLayout>

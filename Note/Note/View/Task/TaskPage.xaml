@@ -5,6 +5,26 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="добавить" Clicked="AddButton_Clicked"/>
     </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="Black" />
+                                <!--TODO:Потом измени цвет если будешь менять фон-->
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+
     <CollectionView x:Name="collectionView"
                     Margin="20"
                     SelectionMode="Single"
@@ -23,17 +43,18 @@
         </CollectionView.GroupHeaderTemplate>
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Frame Padding="5" CornerRadius="10" BackgroundColor ="LightGray">
-                    <Grid BackgroundColor="LightGray">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <CheckBox Grid.Column="0" IsChecked="{Binding Path=Status}" CheckedChanged="CheckedChangedTask" BindingContext="{Binding .}"/>
-                        <Label Grid.Column ="1"  Text="{Binding Path=Text}" FontSize="Medium" TextColor="Black" Margin="0,0,0,7" />
-                    </Grid>
-                </Frame>
-               
+                <Grid>
+                    <Frame Padding="5" CornerRadius="10" BackgroundColor ="LightGray">
+                        <Grid BackgroundColor="LightGray">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <CheckBox Grid.Column="0" IsChecked="{Binding Path=Status}" CheckedChanged="CheckedChangedTask" BindingContext="{Binding .}"/>
+                            <Label Grid.Column ="1"  Text="{Binding Path=Text}" FontSize="Medium" TextColor="Black" Margin="0,0,0,7" />
+                        </Grid>
+                    </Frame>
+                </Grid>
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>

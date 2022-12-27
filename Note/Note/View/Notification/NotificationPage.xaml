@@ -39,7 +39,7 @@
                 <SwipeView>
                     <SwipeView.RightItems>
                         <SwipeItems>
-                            <SwipeItem Text="Delete"
+                            <SwipeItem Text="Удалить"
                                      BackgroundColor="LightPink"
                                      Clicked="DeleteNoteCommand"/>
                         </SwipeItems>

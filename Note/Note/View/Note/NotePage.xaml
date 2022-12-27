@@ -15,7 +15,7 @@
                         <VisualState x:Name="Selected">
                             <VisualState.Setters>
                                 <Setter Property="BackgroundColor"
-                                        Value="White" /> <!--TODO:Потом измени цвет если будешь менять фон-->
+                                        Value="Black" /> <!--TODO:Потом измени цвет если будешь менять фон-->
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
