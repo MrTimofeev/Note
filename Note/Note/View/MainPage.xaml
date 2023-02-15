@@ -34,15 +34,16 @@
         </ShellContent> 
     </FlyoutItem>
 
-    <!--
+    
     <FlyoutItem Title="Календарь">
-        <ShellContent>
+        <ShellContent ContentTemplate="{DataTemplate local:CalendarPage}">
             <ContentPage Title="Календарь">
                 
             </ContentPage>
         </ShellContent>
     </FlyoutItem>
-
+    
+    <!--
     <FlyoutItem Title="Привычки">
         <ShellContent>
             <ContentPage Title="Привычки">
