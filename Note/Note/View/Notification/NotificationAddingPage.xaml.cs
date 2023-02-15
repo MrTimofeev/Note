@@ -59,7 +59,7 @@ namespace Note.View
                 Description = notification.TextNotification,
                 Schedule =
                 {
-                   NotifyTime = date // Used for Scheduling local notification, if not specified notification will show immediately.
+                   NotifyTime = date // Параметр для планирования уведомлений, если не указать парамет покажет сразу
                 }
             };
             await LocalNotificationCenter.Current.Show(notification1);
@@ -78,7 +78,10 @@ namespace Note.View
             NotificationsModel notification = (NotificationsModel)BindingContext;
 
             // код для отметы отображение запронированного уведомления
-            
+            //TODO:Посмотреть как можно отменить запланированное уведомление
+
+
+            // код для удаления из базы уведомления
             await App.NoteDB.DeleteNotificationAsync(notification);
 
             await Shell.Current.GoToAsync(".."); // Закрытие страницы задач
