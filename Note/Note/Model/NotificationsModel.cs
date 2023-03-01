@@ -29,7 +29,7 @@ namespace Note.Model
         /// <summary>
         ///  Время отображения уведомления
         /// </summary>
-        public TimeSpan TimeNotification { get; set; }
+        public TimeSpan TimeNotification { get; set; } 
 
     }
 }

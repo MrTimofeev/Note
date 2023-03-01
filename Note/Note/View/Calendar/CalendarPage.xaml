@@ -3,32 +3,65 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Xamarin.Plugin.Calendar.Controls;assembly=Xamarin.Plugin.Calendar"
              xmlns:local="clr-namespace:Note.View"
-             x:Class="Note.View.CalendarPage">
+             x:Class="Note.View.CalendarPage"  >
     <ContentPage.Content>
-        <controls:Calendar x:Name="CalendarTest" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <controls:Calendar.EventTemplate>
-                <DataTemplate>
-                    <SwipeView>
-                        <SwipeView.RightItems>
-                            <SwipeItems>
-                                <SwipeItem Text="Удалить"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="660" />
+            </Grid.RowDefinitions>
+            <controls:Calendar x:Name="CalendarTest" VerticalOptions="FillAndExpand" 
+                           HorizontalOptions="FillAndExpand"  
+                           DeselectedDayTextColor="Black"
+                           EventIndicatorColor="Red"
+                           MonthLabelColor="Red"
+                           OtherMonthDayColor="Gray"
+                            TodayOutlineColor="Blue"
+                            TodayTextColor="Black"
+                               Grid.Row="0">
+                <controls:Calendar.EventTemplate >
+                    <DataTemplate >
+                        <SwipeView >
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Удалить"
                                      BackgroundColor="LightPink"/>
-                            </SwipeItems>
-                        </SwipeView.RightItems>
-                        <Grid BackgroundColor="Black">
-                            <Frame BorderColor="Black" Padding="5" CornerRadius="10" BackgroundColor="Gray" >
-                                <Grid>
-                                    <StackLayout>
-                                        <Label Text="{Binding Path=Title}" FontSize="Medium" TextColor="Black" Margin="10,0,5,0" HeightRequest="35"/>
-                                        <Label Text="{Binding Path=Text}" TextColor="Black" FontSize="Small" HorizontalTextAlignment="End"/>
-                                    </StackLayout>
-                                </Grid>
-                            </Frame>
-                        </Grid>
-                    </SwipeView>
-                </DataTemplate>
-            </controls:Calendar.EventTemplate>
-            
-        </controls:Calendar>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <Grid BackgroundColor="Black" >
+                                <Frame BorderColor="Black" Padding="5" CornerRadius="10" BackgroundColor="Gray" >
+                                    <Grid>
+                                        <StackLayout>
+                                            <Label Text="{Binding Path=TitelNotification}" FontSize="Medium" TextColor="Black" Margin="10,0,5,0" HeightRequest="35"/>
+                                            <Label Text="{Binding Path=TextNotification}" TextColor="Black" FontSize="Small" HorizontalTextAlignment="End"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </SwipeView>
+                    </DataTemplate>
+                </controls:Calendar.EventTemplate>
+
+                <controls:Calendar.FooterSectionTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal"  Grid.Row="1">
+                            <Button Text="1 кнопка"/>
+                            <Button Text="2 кнопка"/>
+                            <Button Text="1 кнопка"/>
+                            <Button Text="2 кнопка"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </controls:Calendar.FooterSectionTemplate>
+
+
+
+            </controls:Calendar>
+            <!--
+            <StackLayout Orientation="Horizontal"  Grid.Row="1">
+                <Button Text="1 кнопка"/>
+                <Button Text="2 кнопка"/>
+                <Button Text="1 кнопка"/>
+                <Button Text="2 кнопка"/>
+            </StackLayout> -->
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -90,6 +90,11 @@ namespace Note.Data
             return db.Table<NotificationsModel>().ToListAsync();
         }
 
+        public Task<List<NotificationsModel>> GetNotificationDateAsync(string Date)
+        {
+            return db.Table<NotificationsModel>()
+                .Where(i => i.DateNotification == Date).ToListAsync();
+        }
         public Task<NotificationsModel> GetNotificationAsync(int ID)
         {
             return db.Table<NotificationsModel>()

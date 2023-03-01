@@ -14,6 +14,6 @@ namespace Note.Model
 
         public string Text { get; set; }
         
-        public String Date { get; set;  }
+        public string Date { get; set;  }
     }
 }
