@@ -8,7 +8,7 @@
             <StackLayout>
                 <Frame BorderColor="Black" Padding="5" CornerRadius="10" BackgroundColor="LightGray" Margin="5,11,5,5">
                     <Editor Placeholder="Заголовок"
-                        Text="{Binding Path=TitelNotification}"
+                        Text="{Binding Path=Title}"
                         MinimumHeightRequest="100"
                         TextColor="Black"
                           BackgroundColor="LightGray" 
@@ -17,7 +17,7 @@
                 </Frame>
                 <Frame BorderColor="Black" Padding="5" CornerRadius="10" BackgroundColor="LightGray" Margin="5">
                     <Editor Placeholder="Описание"
-                        Text="{Binding Path=TextNotification}"
+                        Text="{Binding Path=Text}"
                         HeightRequest="100"
                         TextColor="Black"
                             PlaceholderColor="Gray"

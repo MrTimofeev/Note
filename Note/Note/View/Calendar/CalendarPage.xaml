@@ -5,63 +5,57 @@
              xmlns:local="clr-namespace:Note.View"
              x:Class="Note.View.CalendarPage"  >
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="660" />
-            </Grid.RowDefinitions>
-            <controls:Calendar x:Name="CalendarTest" VerticalOptions="FillAndExpand" 
-                           HorizontalOptions="FillAndExpand"  
-                           DeselectedDayTextColor="Black"
-                           EventIndicatorColor="Red"
-                           MonthLabelColor="Red"
-                           OtherMonthDayColor="Gray"
-                            TodayOutlineColor="Blue"
-                            TodayTextColor="Black"
-                               Grid.Row="0">
-                <controls:Calendar.EventTemplate >
-                    <DataTemplate >
-                        <SwipeView >
-                            <SwipeView.RightItems>
-                                <SwipeItems>
-                                    <SwipeItem Text="Удалить"
-                                     BackgroundColor="LightPink"/>
-                                </SwipeItems>
-                            </SwipeView.RightItems>
-                            <Grid BackgroundColor="Black" >
-                                <Frame BorderColor="Black" Padding="5" CornerRadius="10" BackgroundColor="Gray" >
-                                    <Grid>
-                                        <StackLayout>
-                                            <Label Text="{Binding Path=TitelNotification}" FontSize="Medium" TextColor="Black" Margin="10,0,5,0" HeightRequest="35"/>
-                                            <Label Text="{Binding Path=TextNotification}" TextColor="Black" FontSize="Small" HorizontalTextAlignment="End"/>
-                                        </StackLayout>
-                                    </Grid>
-                                </Frame>
-                            </Grid>
-                        </SwipeView>
-                    </DataTemplate>
-                </controls:Calendar.EventTemplate>
+        <controls:Calendar x:Name="CalendarTest" VerticalOptions="FillAndExpand" 
+                        HorizontalOptions="FillAndExpand"  
+                        DeselectedDayTextColor="Black"
+                        EventIndicatorColor="Red"
+                        MonthLabelColor="Red"
+                        OtherMonthDayColor="Gray"
+                        TodayOutlineColor="Blue"
+                        TodayTextColor="Black">
+            <controls:Calendar.EventTemplate >
+                <DataTemplate >
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Удалить"
+                                            BackgroundColor="LightPink"
+                                            Clicked="DeleteNoteCommand"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Изменить"
+                                            BackgroundColor="Green"
+                                            Clicked="ChangeNotificationCommand"/>
 
-                <controls:Calendar.FooterSectionTemplate>
-                    <DataTemplate>
-                        <StackLayout Orientation="Horizontal"  Grid.Row="1">
-                            <Button Text="1 кнопка"/>
-                            <Button Text="2 кнопка"/>
-                            <Button Text="1 кнопка"/>
-                            <Button Text="2 кнопка"/>
-                        </StackLayout>
-                    </DataTemplate>
-                </controls:Calendar.FooterSectionTemplate>
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <Grid BackgroundColor="Black" >
+                            <Frame BorderColor="Black" Padding="5" CornerRadius="10" BackgroundColor="Gray" >
+                                <Grid>
+                                    <StackLayout>
+                                        <Label Text="{Binding Path= Title}"   FontSize="Medium" TextColor="Black" Margin="10,0,5,0" HeightRequest="35"/>
+                                        <Label Text="{Binding Path= Text}" TextColor="Black" FontSize="Small" HorizontalTextAlignment="End"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                        
+                    </SwipeView>
+                    
+                </DataTemplate>
+            </controls:Calendar.EventTemplate>
 
-
-
-            </controls:Calendar>
-            <!--
-            <StackLayout Orientation="Horizontal"  Grid.Row="1">
-                <Button Text="1 кнопка"/>
-                <Button Text="2 кнопка"/>
-                <Button Text="1 кнопка"/>
-                <Button Text="2 кнопка"/>
-            </StackLayout> -->
-        </Grid>
+            <controls:Calendar.FooterSectionTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Horizontal">
+                        <Button Text="Напоминания" Margin="2,0,0,0" Clicked="ButtonClick_LoadNotification"/>
+                        <Button Text="Заметки" Clicked="ButtonClick_LoadNote"/>
+                        <Button Text="Задачи" Margin="0,0,2,0" Clicked="ButtonClick_LoadTask"/>
+                     </StackLayout>
+                </DataTemplate>
+            </controls:Calendar.FooterSectionTemplate>
+        </controls:Calendar>
     </ContentPage.Content>
 </ContentPage>

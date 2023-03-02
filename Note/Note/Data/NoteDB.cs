@@ -32,6 +32,12 @@ namespace Note.Data
                 .FirstOrDefaultAsync();
         }
 
+        public Task<List<NoteModel>> GetNoteDateAsync(string Date)
+        {
+            return db.Table<NoteModel>()
+                .Where(i => i.Date == Date).ToListAsync();
+        }
+
         public Task<int> SaveNoteAsync(NoteModel note)
         {
             if (note.ID != 0)
@@ -62,6 +68,13 @@ namespace Note.Data
             return db.Table<TaskModel>()
                 .Where(i => i.ID == ID)
                 .FirstOrDefaultAsync();
+        }
+
+        public Task<List<TaskModel>> GetTaskDateAsync(string Date)
+        {
+            return db.Table<TaskModel>()
+                .Where(i => i.Date == Date)
+                .ToListAsync();
         }
 
         public Task<int> SaveTaskAsync(TaskModel task)
@@ -95,6 +108,7 @@ namespace Note.Data
             return db.Table<NotificationsModel>()
                 .Where(i => i.DateNotification == Date).ToListAsync();
         }
+
         public Task<NotificationsModel> GetNotificationAsync(int ID)
         {
             return db.Table<NotificationsModel>()

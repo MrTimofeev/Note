@@ -55,8 +55,8 @@ namespace Note.View
             var notification1 = new NotificationRequest
             {
                 NotificationId = notification.ID,
-                Title = notification.TitelNotification,
-                Description = notification.TextNotification,
+                Title = notification.Title,
+                Description = notification.Text,
                 Schedule =
                 {
                    NotifyTime = date // Параметр для планирования уведомлений, если не указать парамет покажет сразу
@@ -65,7 +65,7 @@ namespace Note.View
             await LocalNotificationCenter.Current.Show(notification1);
 
 
-            if (!string.IsNullOrWhiteSpace(notification.TitelNotification))
+            if (!string.IsNullOrWhiteSpace(notification.Title))
             {
                 await App.NoteDB.SaveNotificationAsync(notification);
             }

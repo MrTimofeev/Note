@@ -51,7 +51,7 @@
                                BackgroundColor="Gray" >
                             <Grid>
                                 <StackLayout>
-                                    <Label Text="{Binding Path=TitelNotification}" 
+                                    <Label Text="{Binding Path=Title}" 
                                            FontSize="Medium" 
                                            TextColor="Black" 
                                            Margin="10,0,5,0" 
