@@ -28,19 +28,24 @@
     <CollectionView x:Name="collectionView"
                     Margin="20"
                     SelectionMode="Single"
-                    SelectionChanged="OnSelectionChanged">
+                    SelectionChanged="OnSelectionChanged"
+                    IsGrouped="True"
+                    ItemsSource="{Binding Path=TaskModel}">
+        
         <CollectionView.ItemsLayout>
             <LinearItemsLayout Orientation="Vertical"
                                 ItemSpacing="10"/>
         </CollectionView.ItemsLayout>
+        
         <CollectionView.GroupHeaderTemplate>
             <DataTemplate>
-                <Label Text="Выполненные"
+                <Label Text="{Binding Path= Name}"
                    BackgroundColor="LightGray"
                    FontSize="Large"
                    FontAttributes="Bold" />
             </DataTemplate>
         </CollectionView.GroupHeaderTemplate>
+        
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <Grid>

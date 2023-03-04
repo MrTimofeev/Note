@@ -4,6 +4,129 @@
              xmlns:controls="clr-namespace:Xamarin.Plugin.Calendar.Controls;assembly=Xamarin.Plugin.Calendar"
              xmlns:local="clr-namespace:Note.View"
              x:Class="Note.View.CalendarPage"  >
+    <ContentPage.Resources>
+        <DataTemplate x:Key="Test1" x:Name="Test1">
+            <SwipeView>
+                <SwipeView.RightItems>
+                    <SwipeItems>
+                        <SwipeItem Text="Удалить"
+                                            BackgroundColor="LightPink"
+                                            Clicked="DeleteNoteCommand"/>
+                    </SwipeItems>
+                </SwipeView.RightItems>
+                <SwipeView.LeftItems>
+                    <SwipeItems>
+                        <SwipeItem Text="Изменить"
+                                            BackgroundColor="Green"
+                                            Clicked="ChangeNotificationCommand"/>
+
+                    </SwipeItems>
+                </SwipeView.LeftItems>
+                <Grid BackgroundColor="Black" >
+                    <Frame BorderColor="Black" Padding="5" CornerRadius="10" BackgroundColor="Gray" >
+                        <Grid>
+                            <StackLayout>
+                                <Label Text="{Binding Path= Title}"   FontSize="Medium" TextColor="Black" Margin="10,0,5,0" HeightRequest="35"/>
+                                <Label Text="{Binding Path= Date}" TextColor="Black" FontSize="Small" HorizontalTextAlignment="End"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </Grid>
+
+            </SwipeView>
+        </DataTemplate>
+
+        <DataTemplate x:Key="Test2" x:Name="Test2">
+            <SwipeView>
+                <SwipeView.RightItems>
+                    <SwipeItems>
+                        <SwipeItem Text="Удалить"
+                                            BackgroundColor="LightPink"
+                                            Clicked="DeleteNoteCommand"/>
+                    </SwipeItems>
+                </SwipeView.RightItems>
+                <SwipeView.LeftItems>
+                    <SwipeItems>
+                        <SwipeItem Text="Изменить"
+                                            BackgroundColor="Green"
+                                            Clicked="ChangeNotificationCommand"/>
+
+                    </SwipeItems>
+                </SwipeView.LeftItems>
+                <Grid BackgroundColor="Black">
+                    <Frame BorderColor="Black" 
+                               Padding="5" 
+                               CornerRadius="10" 
+                               BackgroundColor="Gray" >
+                        <Grid>
+                            <StackLayout>
+                                <Label Text="{Binding Path=Title}" 
+                                           FontSize="Medium" 
+                                           TextColor="Black" 
+                                           Margin="10,0,5,0" 
+                                           HeightRequest="35" 
+                                           VerticalTextAlignment="Center"/>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                                    <Label Text="Дата:"
+                                            TextColor="Black" 
+                                           FontSize="Small" 
+                                           HorizontalTextAlignment="Center"/>
+                                    <Label Text="{Binding Path=DateNotification}" 
+                                           TextColor="Black" 
+                                           FontSize="Small" 
+                                           HorizontalTextAlignment="End"/>
+
+                                    <Label Text="время:" 
+                                           TextColor="Black" 
+                                           FontSize="Small" 
+                                           HorizontalTextAlignment="End"/>
+                                    <Label Text="{Binding Path=TimeNotification}" 
+                                           TextColor="Black" 
+                                           FontSize="Small" 
+                                           HorizontalTextAlignment="End"/>
+
+                                </StackLayout>
+
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </Grid>
+            </SwipeView>
+        </DataTemplate>
+
+        <DataTemplate x:Key="Test3" x:Name="Test3">
+            <SwipeView>
+                <SwipeView.RightItems>
+                    <SwipeItems>
+                        <SwipeItem Text="Удалить"
+                                            BackgroundColor="LightPink"
+                                            Clicked="DeleteNoteCommand"/>
+                    </SwipeItems>
+                </SwipeView.RightItems>
+                <SwipeView.LeftItems>
+                    <SwipeItems>
+                        <SwipeItem Text="Изменить"
+                                            BackgroundColor="Green"
+                                            Clicked="ChangeNotificationCommand"/>
+
+                    </SwipeItems>
+                </SwipeView.LeftItems>
+                <Grid>
+                    <Frame Padding="5" CornerRadius="10" BackgroundColor ="LightGray">
+                        <Grid BackgroundColor="LightGray">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <CheckBox Grid.Column="0" IsChecked="{Binding Path=Status}"  CheckedChanged="CheckedChangedTask" BindingContext="{Binding .}"/>
+                            <Label Grid.Column ="1"  Text="{Binding Path=Text}" FontSize="Medium" TextColor="Black" Margin="0,0,0,7" />
+                        </Grid>
+                    </Frame>
+                </Grid>
+            </SwipeView>
+        </DataTemplate>
+        
+    </ContentPage.Resources>
     <ContentPage.Content>
         <controls:Calendar x:Name="CalendarTest" VerticalOptions="FillAndExpand" 
                         HorizontalOptions="FillAndExpand"  
@@ -12,48 +135,16 @@
                         MonthLabelColor="Red"
                         OtherMonthDayColor="Gray"
                         TodayOutlineColor="Blue"
-                        TodayTextColor="Black">
-            <controls:Calendar.EventTemplate >
-                <DataTemplate >
-                    <SwipeView>
-                        <SwipeView.RightItems>
-                            <SwipeItems>
-                                <SwipeItem Text="Удалить"
-                                            BackgroundColor="LightPink"
-                                            Clicked="DeleteNoteCommand"/>
-                            </SwipeItems>
-                        </SwipeView.RightItems>
-                        <SwipeView.LeftItems>
-                            <SwipeItems>
-                                <SwipeItem Text="Изменить"
-                                            BackgroundColor="Green"
-                                            Clicked="ChangeNotificationCommand"/>
-
-                            </SwipeItems>
-                        </SwipeView.LeftItems>
-                        <Grid BackgroundColor="Black" >
-                            <Frame BorderColor="Black" Padding="5" CornerRadius="10" BackgroundColor="Gray" >
-                                <Grid>
-                                    <StackLayout>
-                                        <Label Text="{Binding Path= Title}"   FontSize="Medium" TextColor="Black" Margin="10,0,5,0" HeightRequest="35"/>
-                                        <Label Text="{Binding Path= Text}" TextColor="Black" FontSize="Small" HorizontalTextAlignment="End"/>
-                                    </StackLayout>
-                                </Grid>
-                            </Frame>
-                        </Grid>
-                        
-                    </SwipeView>
-                    
-                </DataTemplate>
-            </controls:Calendar.EventTemplate>
-
+                        TodayTextColor="Black" EventTemplate="{StaticResource Test1}"
+                        Culture="{Binding Path =Culture}"   >
+            
             <controls:Calendar.FooterSectionTemplate>
                 <DataTemplate>
                     <StackLayout Orientation="Horizontal">
                         <Button Text="Напоминания" Margin="2,0,0,0" Clicked="ButtonClick_LoadNotification"/>
                         <Button Text="Заметки" Clicked="ButtonClick_LoadNote"/>
                         <Button Text="Задачи" Margin="0,0,2,0" Clicked="ButtonClick_LoadTask"/>
-                     </StackLayout>
+                    </StackLayout>
                 </DataTemplate>
             </controls:Calendar.FooterSectionTemplate>
         </controls:Calendar>

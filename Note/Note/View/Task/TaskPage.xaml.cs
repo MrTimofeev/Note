@@ -14,20 +14,6 @@ namespace Note.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TaskPage : ContentPage
     {
-        public List<TaskModel> source;
-        
-        public List<TaskModel> TaskCollection
-        {
-            get => source;
-            private set
-            {
-                if (value != source)
-                {
-                    source = value;
-                    OnPropertyChanged(nameof(TaskModel));
-                }
-            }
-        }
 
         public TaskPage()
         {

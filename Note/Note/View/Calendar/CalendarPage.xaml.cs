@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -12,21 +13,12 @@ namespace Note.View
 {
     public partial class CalendarPage : ContentPage
     {
-        private bool _value;
-        public bool Value
-        {
-            get => _value;
-            set
-            {
-                _value = value;
-            }
-        }
 
         public CalendarPage()
         {
 
             InitializeComponent();
-            
+            CalendarTest.Culture = new CultureInfo("ru-RU");
         }
 
         protected override void OnAppearing()
@@ -38,8 +30,7 @@ namespace Note.View
 
         public async void LoadNotification()
         {
-            Value = false;
-
+            CalendarTest.EventTemplate = Test2;
 
             CalendarTest.ShownDate = DateTime.Now;
             CalendarTest.EventIndicatorColor = Color.Purple;
@@ -57,7 +48,7 @@ namespace Note.View
 
         private async void ButtonClick_LoadNote(object sender, EventArgs e)
         {
-
+            CalendarTest.EventTemplate = Test1;
             CalendarTest.Events.Clear();
             CalendarTest.ShownDate = DateTime.Now;
             CalendarTest.EventIndicatorColor = Color.Purple;
@@ -96,7 +87,10 @@ namespace Note.View
 
         private async void ButtonClick_LoadTask(object sender, EventArgs e)
         {
+            //CalendarTest.Resources["Test3"] = Test2;
+            CalendarTest.EventTemplate = Test3;
             CalendarTest.Events.Clear();
+            
             CalendarTest.ShownDate = DateTime.Now;
             CalendarTest.EventIndicatorColor = Color.Purple;
             var notifications = await App.NoteDB.GetTaskAsync();
@@ -109,5 +103,35 @@ namespace Note.View
             }
             CalendarTest.Events = test;
         }
+
+        #region Сохранения состояния задачи
+        /// <summary>
+        /// Событие сохранения состояния задачи
+        /// </summary>
+        private async void CheckedChangedTask(object sender, CheckedChangedEventArgs e)
+        {
+
+            TaskModel task = (TaskModel)((CheckBox)sender).BindingContext;
+
+            if (task.Status == false)
+            {
+                task.Status = false; // задача не выполнена 
+                if (!string.IsNullOrWhiteSpace(task.Text))
+                {
+                    await App.NoteDB.SaveTaskAsync(task);
+                }
+            }
+
+            if (task.Status == true)
+            {
+                task.Status = true; // задача выполнена 
+                if (!string.IsNullOrWhiteSpace(task.Text))
+                {
+                    await App.NoteDB.SaveTaskAsync(task);
+                }
+            }
+
+        }
+        #endregion
     }
 }
