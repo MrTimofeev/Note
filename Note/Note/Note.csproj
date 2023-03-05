@@ -50,7 +50,7 @@
 
   <ItemGroup>
     <Folder Include="Helpers\" />
-    <Folder Include="Interface\" />
+    <Folder Include="Helpers\Interface\" />
     <Folder Include="Resources\" />
   </ItemGroup>
 

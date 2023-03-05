@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Note.View.NotePage" BackgroundColor="Black"  >
+             x:Class="Note.View.NotePage" BackgroundColor="Black" 
+             x:Name="NotePage1">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="добавить" Clicked="AddButton_Clicked"/>
+        <ToolbarItem Text="добавить" Command="{Binding Path=Navigation}"/>
     </ContentPage.ToolbarItems>
     <!--Это стиль для изменения цвета выбора-->
     <ContentPage.Resources>
+
         <Style TargetType="Grid">
             <Setter Property="VisualStateManager.VisualStateGroups">
                 <VisualStateGroupList>
@@ -23,24 +25,26 @@
             </Setter>
         </Style>
     </ContentPage.Resources>
-    
+
     <CollectionView x:Name="collectionView"
                     Margin="20"
                     SelectionMode="Single"
-                    SelectionChanged="OnSelectionChanged">
-        
+                     ItemsSource="{Binding Path=Notes}"
+                    SelectedItem="{Binding Path= SelectedNote, Mode=TwoWay}"
+                    SelectionChangedCommand="{Binding Path=Selection}">
         <CollectionView.ItemsLayout>
             <LinearItemsLayout Orientation="Vertical"
                                 ItemSpacing="10"/>
         </CollectionView.ItemsLayout>
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <SwipeView>
+                <SwipeView >
                     <SwipeView.RightItems>
                         <SwipeItems>
                             <SwipeItem Text="Удалить"
                                      BackgroundColor="LightPink"
-                                    Clicked="DeleteNoteCommand"/>
+                                     Command="{Binding BindingContext.Delete, Source={x:Reference NotePage1}}"/>
+                            <!--Clicked="DeleteNoteCommand"-->
                         </SwipeItems>
                     </SwipeView.RightItems>
                     <Grid BackgroundColor="Black">
