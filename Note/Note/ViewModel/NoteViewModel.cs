@@ -59,12 +59,12 @@ namespace Note.ViewModel
 
         public async void OnSelectionChanged()
         {
-            if (SelectedNote != null)
-            {
-                NoteModel note = SelectedNote;
-                await Shell.Current.GoToAsync(
-                           $"{nameof(NoteAddingPage)}?{nameof(NoteAddingPage.ItemId)}={note.ID.ToString()}");
-            }
+            OnSelectionChanged1();
+        }
+
+        public NoteModel OnSelectionChanged1()
+        {
+            return SelectedNote;
         }
 
         public ICommand Navigation { get; }
@@ -78,13 +78,14 @@ namespace Note.ViewModel
 
         public async void DeleteNote()
         {
-            if (SelectedNote != null) 
+            
+            if (SelectedNote != null)
             {
                 NoteModel note = SelectedNote;
                 await App.NoteDB.DeleteNoteAsync(note);
+                LoadNote();
             }
-                
-            
+           
         }
 
 

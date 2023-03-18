@@ -4,7 +4,7 @@
              x:Class="Note.View.NotePage" BackgroundColor="Black" 
              x:Name="NotePage1">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="добавить" Command="{Binding Path=Navigation}"/>
+        <ToolbarItem Text="добавить" Clicked="AddButton_Clicked"/>
     </ContentPage.ToolbarItems>
     <!--Это стиль для изменения цвета выбора-->
     <ContentPage.Resources>
@@ -17,7 +17,8 @@
                         <VisualState x:Name="Selected">
                             <VisualState.Setters>
                                 <Setter Property="BackgroundColor"
-                                        Value="Black" /> <!--TODO:Потом измени цвет если будешь менять фон-->
+                                        Value="Black" />
+                                <!--TODO:Потом измени цвет если будешь менять фон-->
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
@@ -29,9 +30,8 @@
     <CollectionView x:Name="collectionView"
                     Margin="20"
                     SelectionMode="Single"
-                     ItemsSource="{Binding Path=Notes}"
-                    SelectedItem="{Binding Path= SelectedNote, Mode=TwoWay}"
-                    SelectionChangedCommand="{Binding Path=Selection}">
+                       SelectionChanged="OnSelectionChanged">
+        
         <CollectionView.ItemsLayout>
             <LinearItemsLayout Orientation="Vertical"
                                 ItemSpacing="10"/>
@@ -43,8 +43,8 @@
                         <SwipeItems>
                             <SwipeItem Text="Удалить"
                                      BackgroundColor="LightPink"
-                                     Command="{Binding BindingContext.Delete, Source={x:Reference NotePage1}}"/>
-                            <!--Clicked="DeleteNoteCommand"-->
+                                     Clicked="DeleteNoteCommand"/>
+
                         </SwipeItems>
                     </SwipeView.RightItems>
                     <Grid BackgroundColor="Black">
