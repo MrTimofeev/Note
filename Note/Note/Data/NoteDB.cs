@@ -15,6 +15,7 @@ namespace Note.Data
             db.CreateTableAsync<NoteModel>().Wait();
             db.CreateTableAsync<TaskModel>().Wait();
             db.CreateTableAsync<NotificationsModel>().Wait();
+            db.CreateTableAsync<HabitModel>().Wait();
         }
 
 
@@ -55,6 +56,7 @@ namespace Note.Data
             return db.DeleteAsync(note);
         }
         #endregion  
+
 
         //TODO: Потом перенести в отдельный класс
         #region Методы работы с бд для ЗАДАЧ
@@ -143,6 +145,15 @@ namespace Note.Data
         public Task<int> DeleteNotificationAsync(NotificationsModel notification)
         {
             return db.DeleteAsync(notification);
+        }
+        #endregion
+
+
+        //TODO: Потом перенести в отдельный класс
+        #region Методы работы с бд для Привычек
+        public Task<List<HabitModel>> GetHabitsAsync()
+        {
+            return db.Table<HabitModel>().ToListAsync();
         }
         #endregion
     }

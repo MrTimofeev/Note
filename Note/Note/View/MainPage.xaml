@@ -43,15 +43,16 @@
         </ShellContent>
     </FlyoutItem>
     
-    <!--
+   
     <FlyoutItem Title="Привычки">
-        <ShellContent>
+        <ShellContent ContentTemplate="{DataTemplate local:HabitsPage}">
             <ContentPage Title="Привычки">
                 
             </ContentPage>
         </ShellContent>
     </FlyoutItem>
-
+    
+    <!--
     <FlyoutItem Title="Цели">
         <ShellContent>
             <ContentPage Title="Цели">

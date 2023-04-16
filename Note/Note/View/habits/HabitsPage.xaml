@@ -1,12 +1,132 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Note.View.habits.HabitsPage">
+             x:Class="Note.View.HabitsPage" BackgroundColor="Black">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="250"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Дата" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+                    <Grid Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="25"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Grid Grid.Column="0" Margin="1,1,1,1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label x:Name="DayOfWeek1" Grid.Row="0"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Gray" />
+                            <Label x:Name="Day1" Grid.Row="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Gray"/>
+                        </Grid>
+                        
+                        <Grid Grid.Column="1" Margin="1,1,1,1" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label x:Name="DayOfWeek2" Grid.Row="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Gray"/>
+                            <Label x:Name="Day2" Grid.Row="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Gray"/>
+                        </Grid>
+
+                        <Grid Grid.Column="2" Margin="1,1,1,1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label x:Name="DayOfWeek3" Grid.Row="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Gray"/>
+                            <Label x:Name="Day3" Grid.Row="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Gray"/>
+                        </Grid>
+
+                        <Grid Grid.Column="3" Margin="1,1,1,1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label x:Name="DayOfWeek4" Grid.Row="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Gray"/>
+                            <Label x:Name="Day4" Grid.Row="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Gray"/>
+                        </Grid>
+
+                        <Grid Grid.Column="4" Margin="1,1,1,1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label x:Name="DayOfWeek5" Grid.Row="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Gray"/>
+                            <Label x:Name="Day5" Grid.Row="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Gray"/>
+                        </Grid>
+
+                        <Grid Grid.Column="5" Margin="1,1,1,1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label x:Name="DayOfWeek6" Grid.Row="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Gray"/>
+                            <Label x:Name="Day6" Grid.Row="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Gray"/>
+                        </Grid>
+
+                        <Grid Grid.Column="6" Margin="1,1,1,1" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label x:Name="DayOfWeek7" Grid.Row="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Gray"/>
+                            <Label x:Name="Day7" Grid.Row="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Gray"/>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+            </Grid>
+            
+            
+            <CollectionView x:Name="collectionView" 
+                    SelectionMode="Single"
+                            Grid.Row="1">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                                ItemSpacing="5" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate >
+                        <Grid BackgroundColor="Gray">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="250"/>
+
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column ="0"  Text="{Binding Path=Text}" MaxLines="2" TextColor="Black" Margin="5,1,0,1" />
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition Width="25"/>
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Grid.Column="0" IsChecked="{Binding Path=StatusDay1}" Color="LightGray" HorizontalOptions="Center" CheckedChanged="CheckBox_CheckedChanged1"/>
+                                <CheckBox Grid.Column="1" IsChecked="{Binding Path=StatusDay2}" Color="LightGray" HorizontalOptions="Center" CheckedChanged="CheckBox_CheckedChanged2"/>
+                                <CheckBox Grid.Column="2" IsChecked="{Binding Path=StatusDay3}" Color="LightGray" HorizontalOptions="Center" CheckedChanged="CheckBox_CheckedChanged3"/>
+                                <CheckBox Grid.Column="3" IsChecked="{Binding Path=StatusDay4}" Color="LightGray" HorizontalOptions="Center" CheckedChanged="CheckBox_CheckedChanged4"/>
+                                <CheckBox Grid.Column="4" IsChecked="{Binding Path=StatusDay5}" Color="LightGray" HorizontalOptions="Center" CheckedChanged="CheckBox_CheckedChanged5"/>
+                                <CheckBox Grid.Column="5" IsChecked="{Binding Path=StatusDay6}" Color="LightGray" HorizontalOptions="Center" CheckedChanged="CheckBox_CheckedChanged6"/>
+                                <CheckBox Grid.Column="6" IsChecked="{Binding Path=StatusDay7}" Color="LightGray" HorizontalOptions="Center" CheckedChanged="CheckBox_CheckedChanged7"/>
+                            </Grid>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
