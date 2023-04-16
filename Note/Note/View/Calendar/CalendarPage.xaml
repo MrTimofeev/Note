@@ -5,7 +5,7 @@
              xmlns:local="clr-namespace:Note.View"
              x:Class="Note.View.CalendarPage"  >
     <ContentPage.Resources>
-        <DataTemplate x:Key="Test1" x:Name="Test1">
+        <DataTemplate x:Key="Note" x:Name="Note">
             <SwipeView>
                 <SwipeView.RightItems>
                     <SwipeItems>
@@ -18,7 +18,7 @@
                     <SwipeItems>
                         <SwipeItem Text="Изменить"
                                             BackgroundColor="Green"
-                                            Clicked="ChangeNotificationCommand"/>
+                                            Clicked="ChangeNoteCommand"/>
 
                     </SwipeItems>
                 </SwipeView.LeftItems>
@@ -36,13 +36,13 @@
             </SwipeView>
         </DataTemplate>
 
-        <DataTemplate x:Key="Test2" x:Name="Test2">
+        <DataTemplate x:Key="Notification" x:Name="Notification">
             <SwipeView>
                 <SwipeView.RightItems>
                     <SwipeItems>
                         <SwipeItem Text="Удалить"
                                             BackgroundColor="LightPink"
-                                            Clicked="DeleteNoteCommand"/>
+                                            Clicked="DeleteNotificationCommand"/>
                     </SwipeItems>
                 </SwipeView.RightItems>
                 <SwipeView.LeftItems>
@@ -94,24 +94,19 @@
             </SwipeView>
         </DataTemplate>
 
-        <DataTemplate x:Key="Test3" x:Name="Test3">
+        <DataTemplate x:Key="Task" x:Name="Task">
             <SwipeView>
                 <SwipeView.RightItems>
                     <SwipeItems>
                         <SwipeItem Text="Удалить"
                                             BackgroundColor="LightPink"
-                                            Clicked="DeleteNoteCommand"/>
+                                            Clicked="DeleteTaskCommand"/>
                     </SwipeItems>
                 </SwipeView.RightItems>
-                <SwipeView.LeftItems>
-                    <SwipeItems>
-                        <SwipeItem Text="Изменить"
-                                            BackgroundColor="Green"
-                                            Clicked="ChangeNotificationCommand"/>
-
-                    </SwipeItems>
-                </SwipeView.LeftItems>
                 <Grid>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ChangeTaskCommand"/>
+                    </Grid.GestureRecognizers>
                     <Frame Padding="5" CornerRadius="10" BackgroundColor ="LightGray">
                         <Grid BackgroundColor="LightGray">
                             <Grid.ColumnDefinitions>
@@ -135,7 +130,7 @@
                         MonthLabelColor="Red"
                         OtherMonthDayColor="Gray"
                         TodayOutlineColor="Blue"
-                        TodayTextColor="Black" EventTemplate="{StaticResource Test1}"
+                        TodayTextColor="Black" EventTemplate="{StaticResource Note}"
                         Culture="{Binding Path =Culture}"   >
             
             <controls:Calendar.FooterSectionTemplate>

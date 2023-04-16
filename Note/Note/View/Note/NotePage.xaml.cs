@@ -18,6 +18,7 @@ namespace Note.View
             InitializeComponent();
             BindingContext = new NoteViewModel();
         }
+
         protected override async void OnAppearing()
         {
             collectionView.ItemsSource = await App.NoteDB.GetNoteAsync();

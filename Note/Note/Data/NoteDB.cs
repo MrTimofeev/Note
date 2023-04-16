@@ -63,6 +63,18 @@ namespace Note.Data
             return db.Table<TaskModel>().ToListAsync();
         }
 
+        //Выполненые 
+        public Task<List<TaskModel>> GetTaskCompleteAsync()
+        {
+            return db.Table<TaskModel>().Where(x=> x.Status==true).ToListAsync();
+        }
+
+        // Не Выполненые 
+        public Task<List<TaskModel>> GetTaskNotCompleteAsync()
+        {
+            return db.Table<TaskModel>().Where(x => x.Status == false).ToListAsync();
+        }
+
         public Task<TaskModel> GetTaskAsync(int ID)
         {
             return db.Table<TaskModel>()

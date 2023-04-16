@@ -14,6 +14,7 @@ namespace Note.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TaskPage : ContentPage
     {
+        public List<TaskGroupModel> Tasks;
 
         public TaskPage()
         {
@@ -22,10 +23,26 @@ namespace Note.View
 
         protected override async void OnAppearing()
         {
-            collectionView.ItemsSource = await App.NoteDB.GetTaskAsync();
+            collectionView.ItemsSource = await App.NoteDB.GetTaskNotCompleteAsync();
+            collectionView2.ItemsSource =  await App.NoteDB.GetTaskCompleteAsync();
             base.OnAppearing();
-           //TaskCollection = new List<TaskModel>();
-            //TaskCollection = await App.NoteDB.GetTaskAsync();
+        }
+
+        private async Task<List<TaskGroupModel>> LoadTaskComplite() 
+        {
+            Tasks = new List<TaskGroupModel>
+            {
+                new TaskGroupModel("Выполнены", await App.NoteDB.GetTaskCompleteAsync())
+            };
+            return Tasks;
+        }
+        private async Task<List<TaskGroupModel>> LoadTaskNotComplite()
+        {
+            Tasks = new List<TaskGroupModel>
+            {
+                new TaskGroupModel("Не выполненые",  await App.NoteDB.GetTaskNotCompleteAsync())
+            };
+            return Tasks;
         }
 
         #region Комнады
@@ -55,29 +72,35 @@ namespace Note.View
         /// <summary>
         /// Событие сохранения состояния задачи
         /// </summary>
-        private async void CheckedChangedTask(object sender, CheckedChangedEventArgs e)
+        private async void CheckedChanged_NotComplete(object sender, CheckedChangedEventArgs e)
         {
             
             TaskModel task = (TaskModel)((CheckBox)sender).BindingContext;
-
-            if (task.Status == false)
-            {
-                task.Status = false; // задача не выполнена 
-                if (!string.IsNullOrWhiteSpace(task.Text))
-                {
-                    await App.NoteDB.SaveTaskAsync(task);
-                }
-            }
-
             if (task.Status == true)
             {
                 task.Status = true; // задача выполнена 
                 if (!string.IsNullOrWhiteSpace(task.Text))
                 {
                     await App.NoteDB.SaveTaskAsync(task);
+                    collectionView.ItemsSource = await App.NoteDB.GetTaskNotCompleteAsync();
+                    collectionView2.ItemsSource = await App.NoteDB.GetTaskCompleteAsync();
                 }
             }
-           
+        }
+
+        private async void CheckedChanged_Complete(object sender, CheckedChangedEventArgs e)
+        {
+            TaskModel task = (TaskModel)((CheckBox)sender).BindingContext;
+            if (task.Status == false)
+            {
+                task.Status = false; // задача не выполнена 
+                if (!string.IsNullOrWhiteSpace(task.Text))
+                {
+                    await App.NoteDB.SaveTaskAsync(task);
+                    collectionView.ItemsSource = await App.NoteDB.GetTaskNotCompleteAsync();
+                    collectionView2.ItemsSource =  await App.NoteDB.GetTaskCompleteAsync();
+                }
+            }
         }
         #endregion
 
@@ -88,7 +111,8 @@ namespace Note.View
         {
             TaskModel task = (TaskModel)((SwipeItem)sender).BindingContext;
             await App.NoteDB.DeleteTaskAsync(task);
-            collectionView.ItemsSource = await App.NoteDB.GetTaskAsync();
         }
+
+       
     }
 }

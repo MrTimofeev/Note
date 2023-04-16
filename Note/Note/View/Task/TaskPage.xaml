@@ -25,38 +25,68 @@
         </Style>
     </ContentPage.Resources>
 
-    <CollectionView x:Name="collectionView"
+    <ScrollView>
+        <Grid HeightRequest="600">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="400"/>
+            </Grid.RowDefinitions>
+
+            <CollectionView x:Name="collectionView" 
                     Margin="20"
                     SelectionMode="Single"
-                    SelectionChanged="OnSelectionChanged">
-        <CollectionView.ItemsLayout>
-            <LinearItemsLayout Orientation="Vertical"
-                                ItemSpacing="10"/>
-        </CollectionView.ItemsLayout>
-        <CollectionView.GroupHeaderTemplate>
-            <DataTemplate>
-                <Label Text="Выполненные"
-                   BackgroundColor="LightGray"
-                   FontSize="Large"
-                   FontAttributes="Bold" />
-            </DataTemplate>
-        </CollectionView.GroupHeaderTemplate>
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <Grid>
-                    <Frame Padding="5" CornerRadius="10" BackgroundColor ="LightGray">
-                        <Grid BackgroundColor="LightGray">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="40"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <CheckBox Grid.Column="0" IsChecked="{Binding Path=Status}" CheckedChanged="CheckedChangedTask" BindingContext="{Binding .}"/>
-                            <Label Grid.Column ="1"  Text="{Binding Path=Text}" FontSize="Medium" TextColor="Black" Margin="0,0,0,7" />
-                        </Grid>
-                    </Frame>
-                </Grid>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+                    SelectionChanged="OnSelectionChanged"
+                     Grid.Row="0" >
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                                ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
 
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Frame Padding="5" CornerRadius="10" BackgroundColor ="LightGray">
+                                <Grid BackgroundColor="LightGray">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox Grid.Column="0" IsChecked="{Binding Path=Status}" CheckedChanged="CheckedChanged_NotComplete" BindingContext="{Binding .}" Color="Gray" />
+                                    <Label Grid.Column ="1"  Text="{Binding Path=Text}" FontSize="Medium" TextColor="Black" Margin="0,0,0,7" />
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+            <CollectionView x:Name="collectionView2"
+                    Margin="20"
+                    SelectionMode="Single"
+                    SelectionChanged="OnSelectionChanged"
+                     Grid.Row="1" >
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                                ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Frame Padding="5" CornerRadius="10" BackgroundColor ="LightGray">
+                                <Grid BackgroundColor="LightGray">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox Grid.Column="0" IsChecked="{Binding Path=Status}" CheckedChanged="CheckedChanged_Complete" BindingContext="{Binding .}" Color="Gray"/>
+                                    <Label Grid.Column ="1"  Text="{Binding Path=Text}" FontSize="Medium" TextColor="Black" Margin="0,0,0,7" />
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ScrollView>
 </ContentPage>
