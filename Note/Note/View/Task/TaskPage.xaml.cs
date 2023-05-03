@@ -74,7 +74,6 @@ namespace Note.View
         /// </summary>
         private async void CheckedChanged_NotComplete(object sender, CheckedChangedEventArgs e)
         {
-            
             TaskModel task = (TaskModel)((CheckBox)sender).BindingContext;
             if (task.Status == true)
             {

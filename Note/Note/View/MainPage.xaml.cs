@@ -17,6 +17,7 @@ namespace Note
             Routing.RegisterRoute(nameof(NoteAddingPage), typeof(NoteAddingPage));
             Routing.RegisterRoute(nameof(TaskAddingPage), typeof(TaskAddingPage));
             Routing.RegisterRoute(nameof(NotificationAddingPage), typeof(NotificationAddingPage));
+            Routing.RegisterRoute(nameof(HabitsAddingPage), typeof(HabitsAddingPage));
 
         }
     }

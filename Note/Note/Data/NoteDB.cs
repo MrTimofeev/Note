@@ -2,6 +2,7 @@
 using SQLite;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Note.Data
 {
@@ -15,7 +16,7 @@ namespace Note.Data
             db.CreateTableAsync<NoteModel>().Wait();
             db.CreateTableAsync<TaskModel>().Wait();
             db.CreateTableAsync<NotificationsModel>().Wait();
-            db.CreateTableAsync<HabitModel>().Wait();
+            db.CreateTableAsync<HabitModel>().Wait(); //Здесь хранятся только выполненые привычки
         }
 
 
@@ -154,6 +155,36 @@ namespace Note.Data
         public Task<List<HabitModel>> GetHabitsAsync()
         {
             return db.Table<HabitModel>().ToListAsync();
+        }
+
+        public Task<HabitModel> GetHabitAsync(string text)
+        {
+            return db.Table<HabitModel>()
+                .Where(i => i.Text == text && i.Status == false)
+                .FirstOrDefaultAsync();
+        }
+
+        public Task<int> SaveHabitAsync(HabitModel habit)
+        {
+            if (habit.ID != 0)
+            {
+                return db.UpdateAsync(habit);
+            }
+            else
+            {
+                return db.InsertAsync(habit);
+            }
+        }
+
+        public Task<int> DeleteHabitAsync(HabitModel habit)
+        {
+            return db.DeleteAsync(habit);
+        }
+
+
+        public Task<int> DeleteAllHabitAsync()
+        {
+            return db.DeleteAllAsync<HabitModel>();
         }
         #endregion
     }
