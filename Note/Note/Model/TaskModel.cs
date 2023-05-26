@@ -17,7 +17,7 @@ namespace Note.Model
         public string Text { get; set; }
 
         /// <summary>
-        /// Дата создания задачи
+        /// Дата выполнения задачи
         /// </summary>
         public String Date { get; set; }
 

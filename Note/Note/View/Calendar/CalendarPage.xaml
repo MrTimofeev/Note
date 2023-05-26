@@ -130,6 +130,7 @@
                         MonthLabelColor="Red"
                         OtherMonthDayColor="Gray"
                         TodayOutlineColor="Blue"
+                        ArrowsColor="Black"                           
                         TodayTextColor="Black" EventTemplate="{StaticResource Note}"
                         Culture="{Binding Path =Culture}"   >
             

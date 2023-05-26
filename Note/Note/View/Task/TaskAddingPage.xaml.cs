@@ -50,11 +50,10 @@ namespace Note.View
         /// </summary>
         private async void OnSaveButton_Clicked(object sender, EventArgs e)
         {
-            // Код для создания уведомления к задачам 
-
+            //TODO: Добавить Код для создания уведомления к задачам 
 
             TaskModel task = (TaskModel)BindingContext;
-            task.Date = DateTime.Now.ToShortDateString(); 
+            task.Date = DateTask.Date.ToShortDateString().ToString();// Проверить выполнение 
             task.Status = false; // задача не выполнена 
             if (!string.IsNullOrWhiteSpace(task.Text))
             {

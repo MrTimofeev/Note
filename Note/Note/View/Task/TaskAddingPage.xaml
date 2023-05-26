@@ -4,23 +4,30 @@
              x:Class="Note.View.TaskAddingPage"
              BackgroundColor="Black">
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout>
-                <Grid>
-                    <Frame BorderColor="Black" Padding="5" CornerRadius="10" BackgroundColor="LightGray" Margin="5">
-                        <Editor Placeholder="Задача"
-                        PlaceholderColor="Gray"
-                        Text="{Binding Path=Text}"
-                        TextColor="Black" 
-                        BackgroundColor="LightGray" 
-                                AutoSize="TextChanges"/>
-                    </Frame>
-                </Grid>
-                <Grid ColumnDefinitions="*,*">
-                    <Button Grid.Column="0" Text="Сохранить"  Clicked="OnSaveButton_Clicked"/>
-                    <Button Grid.Column="1" Text="Удалить" Clicked="OnDeleteButton_Clicked"/>
-                </Grid>
-            </StackLayout>
+
+        <StackLayout Orientation="Vertical">
+            <Grid>
+                <Frame BorderColor="Black" Padding="5" CornerRadius="10" BackgroundColor="LightGray" Margin="5">
+                    <Editor Placeholder="Задача"
+                    PlaceholderColor="Gray"
+                    Text="{Binding Path=Text}"
+                    TextColor="Black" 
+                    BackgroundColor="LightGray" 
+                            AutoSize="TextChanges"/>
+                </Frame>
+            </Grid>
+            <Grid ColumnDefinitions="140,*">
+                <Label Margin="10,0,0,0"  FontSize="Body" Grid.Column="0" Text="Выбирете дату:" VerticalOptions="Center" TextColor="Gray"/>
+                <Frame  Grid.Column="1" BorderColor="Black" Padding="5" CornerRadius="10" BackgroundColor="LightGray" Margin="5" >
+                    <DatePicker x:Name="DateTask" Format="D" TextColor="Black" Date="{Binding Path=DateNotification}" />
+                </Frame>
+            </Grid>
+            
+            <Grid ColumnDefinitions="*,*">
+                <Button Grid.Column="0" Text="Сохранить"  Clicked="OnSaveButton_Clicked"/>
+                <Button Grid.Column="1" Text="Удалить" Clicked="OnDeleteButton_Clicked"/>
+            </Grid>
         </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>

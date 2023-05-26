@@ -66,22 +66,31 @@ namespace Note.Data
             return db.Table<TaskModel>().ToListAsync();
         }
 
-        //Выполненые 
-        public Task<List<TaskModel>> GetTaskCompleteAsync()
+        #region Методы получения заметок в оперделенный день
+        //Выполненые в определенный день
+        public Task<List<TaskModel>> GetTaskCompleteDateAsync(string Date)
         {
-            return db.Table<TaskModel>().Where(x=> x.Status==true).ToListAsync();
+            return db.Table<TaskModel>().Where(x => x.Status == true && x.Date == Date).ToListAsync();
         }
 
-        // Не Выполненые 
-        public Task<List<TaskModel>> GetTaskNotCompleteAsync()
+        // Не Выполненые в опеределенный день
+        public Task<List<TaskModel>> GetTaskNotCompleteDateAsync(string Date)
         {
-            return db.Table<TaskModel>().Where(x => x.Status == false).ToListAsync();
+            return db.Table<TaskModel>().Where(x => x.Status == false && x.Date == Date).ToListAsync();
         }
+        #endregion
 
         public Task<TaskModel> GetTaskAsync(int ID)
         {
             return db.Table<TaskModel>()
                 .Where(i => i.ID == ID)
+                .FirstOrDefaultAsync();
+        }
+
+        public Task<TaskModel> GetTaskTextAsync(string Text)
+        {
+            return db.Table<TaskModel>()
+                .Where(i => i.Text == Text)
                 .FirstOrDefaultAsync();
         }
 

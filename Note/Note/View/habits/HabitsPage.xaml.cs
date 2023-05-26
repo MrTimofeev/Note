@@ -1,4 +1,5 @@
-﻿using Note.Model;
+﻿using Note.Helpers;
+using Note.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,19 +24,26 @@ namespace Note.View
 
         public void LoadDateHabits() 
         {
-            DayOfWeek1.Text = DateTime.Now.DayOfWeek.ToString() == "Monday" ? "Пн" : "Пн";
+            DateHelper helper = new DateHelper();
+            DayOfWeek1.Text = helper.ShortWeekName(0);
             Day1.Text = DateTime.Now.Day.ToString();
-            DayOfWeek2.Text = DateTime.Now.AddDays(-1).DayOfWeek.ToString() == "Tuesday" ? "Вт" : "Вт";
+
+            DayOfWeek2.Text = helper.ShortWeekName(-1);
             Day2.Text = DateTime.Now.AddDays(-1).Day.ToString();
-            DayOfWeek3.Text = DateTime.Now.AddDays(-2).DayOfWeek.ToString() == "Wednesday" ? "Ср" : "Ср";
+
+            DayOfWeek3.Text = helper.ShortWeekName(-2);
             Day3.Text = DateTime.Now.AddDays(-2).Day.ToString();
-            DayOfWeek4.Text = DateTime.Now.AddDays(-3).DayOfWeek.ToString() == "Thursday" ? "Чт" : "Чт";
+
+            DayOfWeek4.Text = helper.ShortWeekName(-3);
             Day4.Text = DateTime.Now.AddDays(-3).Day.ToString();
-            DayOfWeek5.Text = DateTime.Now.AddDays(-4).DayOfWeek.ToString() == "Friday" ? "Пт" : "Пт";
+
+            DayOfWeek5.Text = helper.ShortWeekName(-4);
             Day5.Text = DateTime.Now.AddDays(-4).Day.ToString();
-            DayOfWeek6.Text = DateTime.Now.AddDays(-5).DayOfWeek.ToString() == "Saturday" ? "Сб" : "Сб";
+
+            DayOfWeek6.Text = helper.ShortWeekName(-5);
             Day6.Text = DateTime.Now.AddDays(-5).Day.ToString();
-            DayOfWeek7.Text = DateTime.Now.AddDays(-6).DayOfWeek.ToString() == "Sunday" ? "Вс" : "Вс";
+
+            DayOfWeek7.Text = helper.ShortWeekName(-6);
             Day7.Text = DateTime.Now.AddDays(-6).Day.ToString();
         }
 
